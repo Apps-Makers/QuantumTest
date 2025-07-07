@@ -1,44 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mi Página Pedorra</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f7f7f7;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #ff0055;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #008CBA;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005f75;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias del Día</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-  <h1>Hola mundo pedorro</h1>
-  <p>Esta es una página HTML de prueba para GitHub Pages.</p>
-  <button onclick="mostrarMensaje()">Hace clic acá</button>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1><a href="/">Noticias del Día</a></h1>
+            </div>
+            <div class="header-right">
+                <div id="date-time" class="date-time"></div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#politica">Política</a></li>
+                <li><a href="#economia">Economía</a></li>
+                <li><a href="#internacionales">Internacionales</a></li>
+                <li><a href="#sociedad">Sociedad</a></li>
+                <li><a href="#opinion">Opinión</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <script>
-    function mostrarMensaje() {
-      alert("¡Funcionó! Aunque sea una página pedorra 😎");
-    }
-  </script>
+    <main class="main-content">
+        <div class="container">
+            <section class="featured-news">
+                <article class="main-article">
+                    <img src="https://via.placeholder.com/800x500" alt="Imagen de la noticia principal">
+                    <div class="article-content">
+                        <h2>El gobierno anuncia nuevas medidas económicas para el próximo semestre</h2>
+                        <p>En una conferencia de prensa, el Ministro de Economía detalló los planes que buscan estabilizar la inflación y promover la inversión extranjera.</p>
+                    </div>
+                </article>
+                <aside class="secondary-news">
+                    <article class="secondary-article">
+                        <img src="https://via.placeholder.com/400x250" alt="Imagen de noticia secundaria">
+                        <div class="article-content">
+                            <h3>Acuerdo clave en el Congreso por la reforma judicial</h3>
+                        </div>
+                    </article>
+                    <article class="secondary-article">
+                        <img src="https://via.placeholder.com/400x250" alt="Imagen de noticia secundaria">
+                        <div class="article-content">
+                            <h3>Tensión en la cumbre internacional por disputas comerciales</h3>
+                        </div>
+                    </article>
+                </aside>
+            </section>
 
+            <div class="main-feed-container">
+                <section class="latest-news-feed">
+                    <div class="feed-header">
+                        <h3>Últimas Noticias</h3>
+                    </div>
+                    <article class="news-item">
+                        <div class="news-item-content">
+                            <span class="category">Economía</span>
+                            <h4>El Banco Central mantiene sin cambios la tasa de interés</h4>
+                            <p>La decisión se tomó en la reunión de directorio de esta tarde para contener las presiones cambiarias.</p>
+                            <span class="time">Publicado a las 18:30</span>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-item-content">
+                            <span class="category">Sociedad</span>
+                            <h4>Nuevo plan de infraestructura para mejorar el transporte público</h4>
+                            <p>Se anunciaron obras en las principales ciudades del país para modernizar la red de subterráneos y trenes.</p>
+                            <span class="time">Publicado a las 17:55</span>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-item-content">
+                            <span class="category">Internacionales</span>
+                            <h4>Elecciones en Europa: los resultados reconfiguran el mapa político</h4>
+                            <p>Los partidos tradicionales pierden terreno frente a nuevas fuerzas emergentes en varios países clave.</p>
+                            <span class="time">Publicado a las 17:20</span>
+                        </div>
+                    </article>
+                </section>
+
+                <aside class="sidebar">
+                    <div class="widget">
+                        <h4 class="widget-title">Lo Más Leído</h4>
+                        <ul class="popular-list">
+                            <li><a href="#">Análisis: ¿Qué significan las nuevas medidas económicas?</a></li>
+                            <li><a href="#">Perfil del nuevo presidente del Tribunal Supremo</a></li>
+                            <li><a href="#">La historia detrás del conflicto diplomático</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h4 class="widget-title">Columnas de Opinión</h4>
+                        <ul class="opinion-list">
+                            <li><a href="#"><strong>Por Juan Pérez:</strong> El futuro del trabajo</a></li>
+                            <li><a href="#"><strong>Por Ana Gómez:</strong> Desafíos de la educación</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget ad-space">
+                        <p>Espacio Publicitario</p>
+                    </div>
+                    <div class="widget">
+                        <h4 class="widget-title">Encuesta del Día</h4>
+                        <form class="poll">
+                            <p>¿Cree que las nuevas medidas económicas serán efectivas?</p>
+                            <label><input type="radio" name="poll" value="yes"> Sí</label>
+                            <label><input type="radio" name="poll" value="no"> No</label>
+                            <label><input type="radio" name="poll" value="uncertain"> No estoy seguro</label>
+                            <button type="submit">Votar</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Secciones</h4>
+                    <ul>
+                        <li><a href="#politica">Política</a></li>
+                        <li><a href="#economia">Economía</a></li>
+                        <li><a href="#internacionales">Internacionales</a></li>
+                        <li><a href="#sociedad">Sociedad</a></li>
+                        <li><a href="#opinion">Opinión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Dirección: Av. Principal 123, Ciudad</p>
+                    <p>Teléfono: (123) 456-7890</p>
+                    <p>Email: contacto@noticiasdeldia.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Noticias del Día. Todos los derechos reservados.</p>
+                <p><a href="#">Términos y Condiciones</a> | <a href="#">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
