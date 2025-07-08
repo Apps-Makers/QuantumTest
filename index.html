@@ -101,6 +101,26 @@
         .faq-question.active .icon-minus {
             display: block;
         }
+        
+        /* Estilos para la galería de productos */
+        .product-item {
+            transition: transform 0.4s ease, opacity 0.4s ease, width 0.4s ease, padding 0.4s ease, margin 0.4s ease;
+            overflow: hidden;
+        }
+        .product-item.hidden {
+            transform: scale(0.9);
+            opacity: 0;
+            width: 0;
+            padding: 0;
+            margin: 0;
+            /* Usamos un timeout para que el display: none no corte la animación */
+        }
+        .filter-btn.active {
+            background-color: #6366f1; /* indigo-500 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -120,7 +140,7 @@
                 <nav id="desktop-nav" class="hidden md:flex md:items-center md:space-x-8 text-sm">
                     <a href="#" data-target="hero" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 active">Inicio</a>
                     <a href="#" data-target="servicios" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Servicios</a>
-                    <a href="#" data-target="portfolio" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Portfolio</a>
+                    <a href="#" data-target="productos" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Productos</a>
                     <a href="#" data-target="nosotros" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Nosotros</a>
                     <a href="#" data-target="testimonios" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Testimonios</a>
                     <a href="#" data-target="contacto" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
@@ -140,7 +160,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#" data-target="hero" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium active">Inicio</a>
                 <a href="#" data-target="servicios" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Servicios</a>
-                <a href="#" data-target="portfolio" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="#" data-target="productos" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Productos</a>
                 <a href="#" data-target="nosotros" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Nosotros</a>
                 <a href="#" data-target="testimonios" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Testimonios</a>
                 <a href="#" data-target="contacto" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contacto</a>
@@ -170,8 +190,8 @@
                             <a href="#" data-target="contacto" class="nav-link bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
                                 Empezar Proyecto
                             </a>
-                            <a href="#" data-target="portfolio" class="nav-link bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
-                                Ver Proyectos
+                            <a href="#" data-target="productos" class="nav-link bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+                                Ver Productos
                             </a>
                         </div>
                     </div>
@@ -196,110 +216,76 @@
                     <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">Ofrecemos un ecosistema completo de soluciones digitales para llevar tu proyecto al siguiente nivel, cubriendo cada fase del ciclo de vida digital con excelencia y precisión.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Tarjeta de Servicio 1 -->
+                    <!-- Tarjetas de Servicio -->
                     <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="layout-template"></i></div>
                         <h3 class="text-xl font-bold mb-4">Diseño Web UI/UX</h3>
                         <p class="text-gray-400">Investigamos a fondo a tus usuarios para crear interfaces intuitivas, atractivas y accesibles. Desde wireframes y prototipos hasta el diseño final, nos aseguramos de que cada interacción sea fluida y memorable, optimizando la conversión y la retención.</p>
                     </div>
-                    <!-- Tarjeta de Servicio 2 -->
                     <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="code-2"></i></div>
                         <h3 class="text-xl font-bold mb-4">Desarrollo Web Full-Stack</h3>
                         <p class="text-gray-400">Construimos aplicaciones web robustas y escalables utilizando las tecnologías más modernas. Nos encargamos tanto del frontend (lo que el usuario ve) como del backend (la lógica del servidor), garantizando un producto final cohesivo y de alto rendimiento.</p>
                     </div>
-                    <!-- Tarjeta de Servicio 3 -->
                     <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="rocket"></i></div>
                         <h3 class="text-xl font-bold mb-4">SEO y Marketing Digital</h3>
                         <p class="text-gray-400">Aumentamos tu visibilidad online a través de estrategias de SEO técnico y de contenido. Creamos campañas de marketing digital personalizadas (SEM, redes sociales, email marketing) para atraer, convertir y fidelizar a tu público objetivo.</p>
                     </div>
-                    <!-- Tarjeta de Servicio 4 -->
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="shopping-cart"></i></div>
-                        <h3 class="text-xl font-bold mb-4">Soluciones E-commerce</h3>
-                        <p class="text-gray-400">Desarrollamos tiendas online a medida, integrando pasarelas de pago seguras, gestión de inventario y una experiencia de compra optimizada. Creamos plataformas que no solo venden, sino que también construyen una marca sólida.</p>
-                    </div>
-                    <!-- Tarjeta de Servicio 5 -->
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="smartphone"></i></div>
-                        <h3 class="text-xl font-bold mb-4">Desarrollo de Apps Móviles</h3>
-                        <p class="text-gray-400">Creamos aplicaciones nativas (iOS/Android) e híbridas que ofrecen una experiencia de usuario excepcional. Desde la conceptualización hasta la publicación en las tiendas de aplicaciones, te acompañamos en todo el proceso.</p>
-                    </div>
-                    <!-- Tarjeta de Servicio 6 -->
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="cloud"></i></div>
-                        <h3 class="text-xl font-bold mb-4">Infraestructura y DevOps</h3>
-                        <p class="text-gray-400">Diseñamos y gestionamos arquitecturas en la nube (AWS, Google Cloud) eficientes y seguras. Implementamos prácticas de DevOps para automatizar el despliegue y garantizar la máxima disponibilidad y escalabilidad de tus aplicaciones.</p>
-                    </div>
-                </div>
-
-                <!-- Nuestro Proceso -->
-                <div class="mt-24 text-center">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-12">Nuestro Proceso de Trabajo</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        <div class="flex flex-col items-center">
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">1</div>
-                            <h4 class="text-xl font-semibold mb-2">Descubrimiento</h4>
-                            <p class="text-gray-400">Analizamos tus metas, tu audiencia y tu competencia para definir una estrategia clara.</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">2</div>
-                            <h4 class="text-xl font-semibold mb-2">Diseño y Prototipado</h4>
-                            <p class="text-gray-400">Creamos la arquitectura de la información y diseñamos prototipos interactivos.</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">3</div>
-                            <h4 class="text-xl font-semibold mb-2">Desarrollo Ágil</h4>
-                            <p class="text-gray-400">Construimos el producto en sprints, permitiendo flexibilidad y feedback constante.</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">4</div>
-                            <h4 class="text-xl font-semibold mb-2">Lanzamiento y Mejora</h4>
-                            <p class="text-gray-400">Desplegamos el proyecto y analizamos los datos para una optimización continua.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECCIÓN PORTFOLIO (Pestaña) ========== -->
-        <section id="portfolio" class="page-section hidden py-20 bg-gray-900">
+        <!-- ========== SECCIÓN PRODUCTOS (Pestaña) ========== -->
+        <section id="productos" class="page-section hidden py-20 bg-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Nuestro Trabajo Reciente</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Estamos orgullosos de los proyectos que hemos entregado. Aquí tienes una selección de nuestros casos de estudio más destacados.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Nuestros Productos</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Delicias hechas con pasión. Explora nuestras especialidades y encuentra tu favorita.</p>
                 </div>
-                <div class="space-y-16">
-                    <!-- Caso de Estudio 1 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <img src="galeria/foto4.png" alt="Proyecto 1" class="rounded-lg shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Imagen+no+encontrada';">
-                        <div>
-                            <h3 class="text-2xl font-bold text-indigo-400">Innovatech - Rediseño Corporativo</h3>
-                            <p class="mt-4 text-gray-300">Innovatech nos contactó para modernizar su presencia online. Desarrollamos un sitio web completamente nuevo, enfocado en la generación de leads y con un diseño que refleja su liderazgo en el sector tecnológico.</p>
-                            <p class="mt-2 text-gray-400"><strong class="text-white">Servicios:</strong> Diseño UI/UX, Desarrollo Web, Estrategia SEO.</p>
-                            <a href="#" class="inline-block mt-4 text-white font-semibold hover:text-indigo-400 transition">Ver caso de estudio &rarr;</a>
-                        </div>
+                <!-- Filter Buttons -->
+                <div id="product-filters" class="flex justify-center flex-wrap gap-3 md:gap-4 mb-12">
+                    <button data-filter="all" class="filter-btn active px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300">Todos</button>
+                    <button data-filter="panaderia" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Panadería</button>
+                    <button data-filter="pasteleria" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Pastelería</button>
+                    <button data-filter="eventos" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Eventos</button>
+                    <button data-filter="sandwicheria" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Sandwichería</button>
+                </div>
+                <!-- Product Gallery -->
+                <div id="product-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Pasteleria Items -->
+                    <div class="product-item group" data-category="pasteleria">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="PASTELERIA/torta_chocolate.png" alt="Torta de Chocolate" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Pastelería';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Torta de Chocolate</h3></div></div>
                     </div>
-                    <!-- Caso de Estudio 2 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                         <div class="order-2 md:order-1">
-                            <h3 class="text-2xl font-bold text-indigo-400">EducaNext - Plataforma E-learning</h3>
-                            <p class="mt-4 text-gray-300">Creamos desde cero una plataforma de aprendizaje online con cursos en video, seguimiento de progreso y certificaciones. La arquitectura escalable soporta miles de usuarios simultáneos.</p>
-                            <p class="mt-2 text-gray-400"><strong class="text-white">Servicios:</strong> App Web, Diseño UI/UX, Infraestructura Cloud.</p>
-                            <a href="#" class="inline-block mt-4 text-white font-semibold hover:text-indigo-400 transition">Ver caso de estudio &rarr;</a>
-                        </div>
-                        <img src="galeria/foto5.png" alt="Proyecto 2" class="order-1 md:order-2 rounded-lg shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Imagen+no+encontrada';">
+                    <div class="product-item group" data-category="pasteleria">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="PASTELERIA/cheesecake.png" alt="Cheesecake de Frutos Rojos" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Pastelería';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Cheesecake</h3></div></div>
                     </div>
-                    <!-- Caso de Estudio 3 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <img src="galeria/foto6.png" alt="Proyecto 3" class="rounded-lg shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Imagen+no+encontrada';">
-                        <div>
-                            <h3 class="text-2xl font-bold text-indigo-400">FitLife - App de Fitness</h3>
-                            <p class="mt-4 text-gray-300">Desarrollamos una aplicación móvil para iOS y Android que ofrece rutinas de ejercicio personalizadas, seguimiento de actividad y gamificación para mantener la motivación de los usuarios.</p>
-                            <p class="mt-2 text-gray-400"><strong class="text-white">Servicios:</strong> Desarrollo Móvil, Diseño UI/UX, Backend API.</p>
-                            <a href="#" class="inline-block mt-4 text-white font-semibold hover:text-indigo-400 transition">Ver caso de estudio &rarr;</a>
-                        </div>
+                    <div class="product-item group" data-category="pasteleria">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="PASTELERIA/muffins.png" alt="Muffins" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Pastelería';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Muffins</h3></div></div>
+                    </div>
+
+                    <!-- Panaderia Items -->
+                    <div class="product-item group" data-category="panaderia">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="PANADERIA/pan_masa_madre.png" alt="Pan de Masa Madre" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Panadería';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Pan de Masa Madre</h3></div></div>
+                    </div>
+                    <div class="product-item group" data-category="panaderia">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="PANADERIA/croissants.png" alt="Croissants" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Panadería';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Croissants</h3></div></div>
+                    </div>
+
+                    <!-- Eventos Items -->
+                    <div class="product-item group" data-category="eventos">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="EVENTOS/torta_casamiento.png" alt="Torta de Casamiento" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Eventos';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Torta de Casamiento</h3></div></div>
+                    </div>
+                    <div class="product-item group" data-category="eventos">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="EVENTOS/mesa_dulce.png" alt="Mesa Dulce" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Eventos';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Mesa Dulce</h3></div></div>
+                    </div>
+
+                    <!-- Sandwicheria Items -->
+                    <div class="product-item group" data-category="sandwicheria">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="SANDWICHERIA/sandwich_crudo.png" alt="Sandwich de Crudo y Rúcula" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Sandwichería';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Sandwich de Crudo</h3></div></div>
+                    </div>
+                    <div class="product-item group" data-category="sandwicheria">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="SANDWICHERIA/sandwich_veggie.png" alt="Sandwich Veggie" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x400/22C55E/FFFFFF?text=Sandwichería';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Sandwich Veggie</h3></div></div>
                     </div>
                 </div>
             </div>
@@ -323,28 +309,6 @@
                         <p class="text-gray-300">Ser la agencia digital líder en la región, reconocida por nuestra excelencia técnica, nuestra creatividad y por construir relaciones de confianza a largo plazo con nuestros clientes.</p>
                     </div>
                 </div>
-                <!-- Valores -->
-                <div class="mb-20">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-12">Nuestros Valores</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                        <div><i data-lucide="users" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Colaboración</h4></div>
-                        <div><i data-lucide="lightbulb" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Innovación</h4></div>
-                        <div><i data-lucide="gem" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Calidad</h4></div>
-                        <div><i data-lucide="shield-check" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Integridad</h4></div>
-                    </div>
-                </div>
-                <!-- Equipo -->
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-12">Conoce a Nuestro Equipo</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto10.png" alt="Foto de Ana Torres" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=AT';"><h4 class="mt-4 text-xl font-semibold text-white">Ana Torres</h4><p class="text-indigo-400">Directora General y Fundadora</p></div>
-                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto2.png" alt="Foto de David Chen" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=DC';"><h4 class="mt-4 text-xl font-semibold text-white">David Chen</h4><p class="text-indigo-400">Director de Tecnología (CTO)</p></div>
-                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto3.png" alt="Foto de Sofía Rossi" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=SR';"><h4 class="mt-4 text-xl font-semibold text-white">Sofía Rossi</h4><p class="text-indigo-400">Directora de Diseño (CDO)</p></div>
-                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto7.png" alt="Foto de Carlos Vega" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=CV';"><h4 class="mt-4 text-xl font-semibold text-white">Carlos Vega</h4><p class="text-indigo-400">Líder de Desarrollo Backend</p></div>
-                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto8.png" alt="Foto de Elena Mora" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=EM';"><h4 class="mt-4 text-xl font-semibold text-white">Elena Mora</h4><p class="text-indigo-400">Especialista en Marketing Digital</p></div>
-                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto9.png" alt="Foto de Javier Núñez" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=JN';"><h4 class="mt-4 text-xl font-semibold text-white">Javier Núñez</h4><p class="text-indigo-400">Arquitecto de Soluciones Cloud</p></div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -355,14 +319,10 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-white">La Voz de Nuestros Clientes</h2>
                      <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">La confianza es nuestro mayor activo. Esto es lo que dicen quienes han trabajado con nosotros.</p>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     <!-- Testimonios -->
                     <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"Quantum transformó nuestra visión en una realidad digital impresionante. Su profesionalismo es inigualable."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto2.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=CE';"><div class="ml-4"><p class="font-semibold text-white">Carla Estrada</p><p class="text-sm text-gray-400">CEO de Innovatech</p></div></div></div>
                     <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"El equipo no solo entregó un producto de alta calidad, sino que nos asesoró en cada paso. Los recomiendo al 100%."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto3.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=MJ';"><div class="ml-4"><p class="font-semibold text-white">Marcos Jiménez</p><p class="text-sm text-gray-400">Fundador de Café del Sol</p></div></div></div>
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"La nueva app móvil superó nuestras expectativas. El feedback de los usuarios ha sido increíble. ¡Gran trabajo!"</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto10.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=LR';"><div class="ml-4"><p class="font-semibold text-white">Laura Reyes</p><p class="text-sm text-gray-400">Directora de Producto en FitLife</p></div></div></div>
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"Gracias a su estrategia SEO, nuestro tráfico orgánico se triplicó en seis meses. Son verdaderos expertos."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto5.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=FG';"><div class="ml-4"><p class="font-semibold text-white">Fernando Garza</p><p class="text-sm text-gray-400">Gerente de Marketing en EcoVentures</p></div></div></div>
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"La migración a la nube fue impecable. Nuestro sistema es ahora más rápido y seguro que nunca."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto1.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=RM';"><div class="ml-4"><p class="font-semibold text-white">Ricardo Morales</p><p class="text-sm text-gray-400">CTO en LogiCorp</p></div></div></div>
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"El diseño de nuestra tienda online es elegante y funcional. Las ventas han aumentado un 40% desde el lanzamiento."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto6.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=VP';"><div class="ml-4"><p class="font-semibold text-white">Valeria Ponce</p><p class="text-sm text-gray-400">Fundadora de Moda Urbana</p></div></div></div>
                 </div>
             </div>
         </section>
@@ -395,36 +355,6 @@
                         </div>
                         <div class="mt-8">
                              <iframe class="w-full h-64 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.748377708794!2d-57.94258962429696!3d-34.91276397284795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e61c28c83e79%3A0x5371887337346c8e!2sPlaza%20Azcu%C3%A9naga!5e0!3m2!1ses-419!2sar!4v1720467812988!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-
-                        <div class="mt-12">
-                            <h3 class="text-2xl font-bold mb-6">Preguntas Frecuentes</h3>
-                            <div id="faq-accordion" class="space-y-4">
-                                <!-- FAQ 1 -->
-                                <div class="bg-gray-900 rounded-lg">
-                                    <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-                                        <span>¿Cuánto tiempo toma un proyecto?</span>
-                                        <i data-lucide="plus" class="icon-plus"></i><i data-lucide="minus" class="icon-minus"></i>
-                                    </button>
-                                    <div class="faq-answer px-4 pb-4 text-gray-400">La duración varía según la complejidad. Un sitio web institucional puede tomar de 4 a 8 semanas, mientras que una aplicación web compleja puede requerir varios meses.</div>
-                                </div>
-                                <!-- FAQ 2 -->
-                                <div class="bg-gray-900 rounded-lg">
-                                    <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-                                        <span>¿Ofrecen mantenimiento post-lanzamiento?</span>
-                                        <i data-lucide="plus" class="icon-plus"></i><i data-lucide="minus" class="icon-minus"></i>
-                                    </button>
-                                    <div class="faq-answer px-4 pb-4 text-gray-400">Sí, ofrecemos planes de mantenimiento y soporte para garantizar que tu sitio o aplicación esté siempre actualizado, seguro y funcionando de manera óptima.</div>
-                                </div>
-                                <!-- FAQ 3 -->
-                                <div class="bg-gray-900 rounded-lg">
-                                    <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-                                        <span>¿Cómo es el proceso de pago?</span>
-                                        <i data-lucide="plus" class="icon-plus"></i><i data-lucide="minus" class="icon-minus"></i>
-                                    </button>
-                                    <div class="faq-answer px-4 pb-4 text-gray-400">Generalmente trabajamos con un pago inicial del 50% para comenzar el proyecto y el 50% restante al finalizar, antes del lanzamiento. Somos flexibles y podemos adaptarnos a tus necesidades.</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -496,16 +426,54 @@
             });
 
             // --- SCRIPT PARA EL ACORDEÓN DE FAQ ---
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    const currentlyActive = document.querySelector('.faq-question.active');
-                    if (currentlyActive && currentlyActive !== question) {
-                        currentlyActive.classList.remove('active');
-                    }
-                    question.classList.toggle('active');
+            const faqContainer = document.getElementById('faq-accordion');
+            if (faqContainer) {
+                const faqQuestions = faqContainer.querySelectorAll('.faq-question');
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const currentlyActive = faqContainer.querySelector('.faq-question.active');
+                        if (currentlyActive && currentlyActive !== question) {
+                            currentlyActive.classList.remove('active');
+                        }
+                        question.classList.toggle('active');
+                    });
                 });
-            });
+            }
+            
+            // --- SCRIPT PARA FILTRADO DE PRODUCTOS ---
+            const filterContainer = document.getElementById('product-filters');
+            if(filterContainer) {
+                const filterButtons = filterContainer.querySelectorAll('.filter-btn');
+                const galleryItems = document.querySelectorAll('#product-gallery .product-item');
+
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const currentActive = filterContainer.querySelector('.active');
+                        if (currentActive) {
+                            currentActive.classList.remove('active', 'bg-indigo-500', 'shadow-lg');
+                            currentActive.classList.add('bg-gray-700', 'hover:bg-gray-600');
+                        }
+                        
+                        button.classList.add('active', 'bg-indigo-500', 'shadow-lg');
+                        button.classList.remove('bg-gray-700', 'hover:bg-gray-600');
+                        
+                        const filter = button.dataset.filter;
+
+                        galleryItems.forEach(item => {
+                            // Ocultar con animación
+                            if (filter !== 'all' && item.dataset.category !== filter) {
+                                item.classList.add('hidden');
+                            } else {
+                                // Mostrar con animación
+                                setTimeout(() => {
+                                    item.classList.remove('hidden');
+                                }, 10); // Pequeño delay para que la animación funcione
+                            }
+                        });
+                    });
+                });
+            }
+
 
             // Mostrar la pestaña de inicio por defecto
             showTab('hero');
