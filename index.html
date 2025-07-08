@@ -1,164 +1,517 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias del Día</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
+    <title>Soluciones Digitales Quantum - Potenciamos tu Presencia Online</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Script para iconos (Lucide Icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <h1><a href="/">Noticias del Día</a></h1>
-            </div>
-            <div class="header-right">
-                <div id="date-time" class="date-time"></div>
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
+    <style>
+        /* Estilo base para usar la fuente Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Pequeño ajuste para el desenfoque del fondo en el hero */
+        .backdrop-blur-sm {
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+        /* Estilo para el enlace de navegación activo */
+        .nav-link.active {
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* --- ANIMACIONES --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Clases para aplicar animaciones */
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .animate-fadeInRight {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease-in-out forwards;
+        }
+        
+        /* Estilos para retrasos de animación */
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-600 { animation-delay: 0.6s; }
+        .animation-delay-800 { animation-delay: 0.8s; }
+
+        /* Asegurar que los elementos animados empiecen ocultos */
+        .animated {
+            opacity: 0;
+        }
+
+        /* Estilos para el acordeón de FAQ */
+        .faq-answer {
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .faq-question.active + .faq-answer {
+            max-height: 200px; /* Ajusta según el contenido */
+        }
+        .faq-question .icon-plus {
+            display: block;
+        }
+        .faq-question .icon-minus {
+            display: none;
+        }
+        .faq-question.active .icon-plus {
+            display: none;
+        }
+        .faq-question.active .icon-minus {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- ========== BARRA DE NAVEGACIÓN ========== -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" data-target="hero" class="nav-link text-2xl font-bold flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-indigo-400"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                        Quantum
+                    </a>
+                </div>
+                <!-- Navegación de Escritorio -->
+                <nav id="desktop-nav" class="hidden md:flex md:items-center md:space-x-8 text-sm">
+                    <a href="#" data-target="hero" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 active">Inicio</a>
+                    <a href="#" data-target="servicios" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Servicios</a>
+                    <a href="#" data-target="portfolio" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Portfolio</a>
+                    <a href="#" data-target="nosotros" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Nosotros</a>
+                    <a href="#" data-target="testimonios" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Testimonios</a>
+                    <a href="#" data-target="contacto" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
+                </nav>
+                <!-- Botón de Menú Móvil -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#politica">Política</a></li>
-                <li><a href="#economia">Economía</a></li>
-                <li><a href="#internacionales">Internacionales</a></li>
-                <li><a href="#sociedad">Sociedad</a></li>
-                <li><a href="#opinion">Opinión</a></li>
-            </ul>
-        </nav>
+        <!-- Menú Móvil (oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" data-target="hero" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium active">Inicio</a>
+                <a href="#" data-target="servicios" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Servicios</a>
+                <a href="#" data-target="portfolio" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="#" data-target="nosotros" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Nosotros</a>
+                <a href="#" data-target="testimonios" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Testimonios</a>
+                <a href="#" data-target="contacto" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+            </div>
+        </div>
     </header>
 
-    <main class="main-content">
-        <div class="container">
-            <section class="featured-news">
-                <article class="main-article">
-                    <img src="https://via.placeholder.com/800x500" alt="Imagen de la noticia principal">
-                    <div class="article-content">
-                        <h2>El gobierno anuncia nuevas medidas económicas para el próximo semestre</h2>
-                        <p>En una conferencia de prensa, el Ministro de Economía detalló los planes que buscan estabilizar la inflación y promover la inversión extranjera.</p>
-                    </div>
-                </article>
-                <aside class="secondary-news">
-                    <article class="secondary-article">
-                        <img src="https://via.placeholder.com/400x250" alt="Imagen de noticia secundaria">
-                        <div class="article-content">
-                            <h3>Acuerdo clave en el Congreso por la reforma judicial</h3>
-                        </div>
-                    </article>
-                    <article class="secondary-article">
-                        <img src="https://via.placeholder.com/400x250" alt="Imagen de noticia secundaria">
-                        <div class="article-content">
-                            <h3>Tensión en la cumbre internacional por disputas comerciales</h3>
-                        </div>
-                    </article>
-                </aside>
-            </section>
-
-            <div class="main-feed-container">
-                <section class="latest-news-feed">
-                    <div class="feed-header">
-                        <h3>Últimas Noticias</h3>
-                    </div>
-                    <article class="news-item">
-                        <div class="news-item-content">
-                            <span class="category">Economía</span>
-                            <h4>El Banco Central mantiene sin cambios la tasa de interés</h4>
-                            <p>La decisión se tomó en la reunión de directorio de esta tarde para contener las presiones cambiarias.</p>
-                            <span class="time">Publicado a las 18:30</span>
-                        </div>
-                    </article>
-                    <article class="news-item">
-                        <div class="news-item-content">
-                            <span class="category">Sociedad</span>
-                            <h4>Nuevo plan de infraestructura para mejorar el transporte público</h4>
-                            <p>Se anunciaron obras en las principales ciudades del país para modernizar la red de subterráneos y trenes.</p>
-                            <span class="time">Publicado a las 17:55</span>
-                        </div>
-                    </article>
-                    <article class="news-item">
-                        <div class="news-item-content">
-                            <span class="category">Internacionales</span>
-                            <h4>Elecciones en Europa: los resultados reconfiguran el mapa político</h4>
-                            <p>Los partidos tradicionales pierden terreno frente a nuevas fuerzas emergentes en varios países clave.</p>
-                            <span class="time">Publicado a las 17:20</span>
-                        </div>
-                    </article>
-                </section>
-
-                <aside class="sidebar">
-                    <div class="widget">
-                        <h4 class="widget-title">Lo Más Leído</h4>
-                        <ul class="popular-list">
-                            <li><a href="#">Análisis: ¿Qué significan las nuevas medidas económicas?</a></li>
-                            <li><a href="#">Perfil del nuevo presidente del Tribunal Supremo</a></li>
-                            <li><a href="#">La historia detrás del conflicto diplomático</a></li>
+    <main class="pt-16">
+        <!-- ========== SECCIÓN HERO (Pestaña Inicio) ========== -->
+        <section id="hero" class="page-section relative overflow-hidden bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Columna de Texto -->
+                    <div class="text-center md:text-left">
+                        <h1 class="animated animate-fadeInUp text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Transformamos Ideas en <span class="text-indigo-400">Experiencias Digitales</span>
+                        </h1>
+                        <p class="animated animate-fadeInUp animation-delay-200 mt-6 max-w-xl mx-auto md:mx-0 text-lg md:text-xl text-gray-300">
+                            Somos una agencia de desarrollo y diseño que impulsa a las marcas a alcanzar su máximo potencial en el mundo digital.
+                        </p>
+                        <ul class="mt-8 space-y-4 text-left max-w-md mx-auto md:mx-0">
+                            <li class="animated animate-fadeInUp animation-delay-400 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Diseño Innovador:</strong> Interfaces atractivas y centradas en el usuario.</span></li>
+                            <li class="animated animate-fadeInUp animation-delay-600 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Código Optimizado:</strong> Soluciones rápidas, seguras y escalables.</span></li>
+                            <li class="animated animate-fadeInUp animation-delay-800 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Soporte Dedicado:</strong> Acompañamiento constante en cada etapa.</span></li>
                         </ul>
+                        <div class="animated animate-fadeInUp animation-delay-800 mt-10 flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="#" data-target="contacto" class="nav-link bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+                                Empezar Proyecto
+                            </a>
+                            <a href="#" data-target="portfolio" class="nav-link bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+                                Ver Proyectos
+                            </a>
+                        </div>
                     </div>
-                    <div class="widget">
-                        <h4 class="widget-title">Columnas de Opinión</h4>
-                        <ul class="opinion-list">
-                            <li><a href="#"><strong>Por Juan Pérez:</strong> El futuro del trabajo</a></li>
-                            <li><a href="#"><strong>Por Ana Gómez:</strong> Desafíos de la educación</a></li>
-                        </ul>
+                    <!-- Columna de Imagen -->
+                    <div class="relative mt-12 md:mt-0">
+                        <div class="animated animate-fadeInRight">
+                            <img src="galeria/foto_hero.png" alt="Profesional del equipo Quantum trabajando" class="relative rounded-lg mx-auto z-10" onerror="this.onerror=null;this.src='https://placehold.co/600x700/22C55E/FFFFFF?text=Tu+Foto+Aquí';">
+                            <!-- Formas decorativas -->
+                            <div class="absolute -top-8 -right-8 w-40 h-40 bg-indigo-500/20 rounded-full blur-2xl"></div>
+                            <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-purple-500/20 rounded-lg blur-2xl transform rotate-45"></div>
+                        </div>
                     </div>
-                    <div class="widget ad-space">
-                        <p>Espacio Publicitario</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN SERVICIOS (Pestaña) ========== -->
+        <section id="servicios" class="page-section hidden py-20 bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Nuestros Servicios Integrales</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">Ofrecemos un ecosistema completo de soluciones digitales para llevar tu proyecto al siguiente nivel, cubriendo cada fase del ciclo de vida digital con excelencia y precisión.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Tarjeta de Servicio 1 -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="layout-template"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Diseño Web UI/UX</h3>
+                        <p class="text-gray-400">Investigamos a fondo a tus usuarios para crear interfaces intuitivas, atractivas y accesibles. Desde wireframes y prototipos hasta el diseño final, nos aseguramos de que cada interacción sea fluida y memorable, optimizando la conversión y la retención.</p>
                     </div>
-                    <div class="widget">
-                        <h4 class="widget-title">Encuesta del Día</h4>
-                        <form class="poll">
-                            <p>¿Cree que las nuevas medidas económicas serán efectivas?</p>
-                            <label><input type="radio" name="poll" value="yes"> Sí</label>
-                            <label><input type="radio" name="poll" value="no"> No</label>
-                            <label><input type="radio" name="poll" value="uncertain"> No estoy seguro</label>
-                            <button type="submit">Votar</button>
+                    <!-- Tarjeta de Servicio 2 -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="code-2"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Desarrollo Web Full-Stack</h3>
+                        <p class="text-gray-400">Construimos aplicaciones web robustas y escalables utilizando las tecnologías más modernas. Nos encargamos tanto del frontend (lo que el usuario ve) como del backend (la lógica del servidor), garantizando un producto final cohesivo y de alto rendimiento.</p>
+                    </div>
+                    <!-- Tarjeta de Servicio 3 -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="rocket"></i></div>
+                        <h3 class="text-xl font-bold mb-4">SEO y Marketing Digital</h3>
+                        <p class="text-gray-400">Aumentamos tu visibilidad online a través de estrategias de SEO técnico y de contenido. Creamos campañas de marketing digital personalizadas (SEM, redes sociales, email marketing) para atraer, convertir y fidelizar a tu público objetivo.</p>
+                    </div>
+                    <!-- Tarjeta de Servicio 4 -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="shopping-cart"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Soluciones E-commerce</h3>
+                        <p class="text-gray-400">Desarrollamos tiendas online a medida, integrando pasarelas de pago seguras, gestión de inventario y una experiencia de compra optimizada. Creamos plataformas que no solo venden, sino que también construyen una marca sólida.</p>
+                    </div>
+                    <!-- Tarjeta de Servicio 5 -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="smartphone"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Desarrollo de Apps Móviles</h3>
+                        <p class="text-gray-400">Creamos aplicaciones nativas (iOS/Android) e híbridas que ofrecen una experiencia de usuario excepcional. Desde la conceptualización hasta la publicación en las tiendas de aplicaciones, te acompañamos en todo el proceso.</p>
+                    </div>
+                    <!-- Tarjeta de Servicio 6 -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="cloud"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Infraestructura y DevOps</h3>
+                        <p class="text-gray-400">Diseñamos y gestionamos arquitecturas en la nube (AWS, Google Cloud) eficientes y seguras. Implementamos prácticas de DevOps para automatizar el despliegue y garantizar la máxima disponibilidad y escalabilidad de tus aplicaciones.</p>
+                    </div>
+                </div>
+
+                <!-- Nuestro Proceso -->
+                <div class="mt-24 text-center">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-12">Nuestro Proceso de Trabajo</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="flex flex-col items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">1</div>
+                            <h4 class="text-xl font-semibold mb-2">Descubrimiento</h4>
+                            <p class="text-gray-400">Analizamos tus metas, tu audiencia y tu competencia para definir una estrategia clara.</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">2</div>
+                            <h4 class="text-xl font-semibold mb-2">Diseño y Prototipado</h4>
+                            <p class="text-gray-400">Creamos la arquitectura de la información y diseñamos prototipos interactivos.</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">3</div>
+                            <h4 class="text-xl font-semibold mb-2">Desarrollo Ágil</h4>
+                            <p class="text-gray-400">Construimos el producto en sprints, permitiendo flexibilidad y feedback constante.</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-700 text-indigo-400 text-2xl font-bold mb-4">4</div>
+                            <h4 class="text-xl font-semibold mb-2">Lanzamiento y Mejora</h4>
+                            <p class="text-gray-400">Desplegamos el proyecto y analizamos los datos para una optimización continua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN PORTFOLIO (Pestaña) ========== -->
+        <section id="portfolio" class="page-section hidden py-20 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Nuestro Trabajo Reciente</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Estamos orgullosos de los proyectos que hemos entregado. Aquí tienes una selección de nuestros casos de estudio más destacados.</p>
+                </div>
+                <div class="space-y-16">
+                    <!-- Caso de Estudio 1 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <img src="galeria/foto4.png" alt="Proyecto 1" class="rounded-lg shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Imagen+no+encontrada';">
+                        <div>
+                            <h3 class="text-2xl font-bold text-indigo-400">Innovatech - Rediseño Corporativo</h3>
+                            <p class="mt-4 text-gray-300">Innovatech nos contactó para modernizar su presencia online. Desarrollamos un sitio web completamente nuevo, enfocado en la generación de leads y con un diseño que refleja su liderazgo en el sector tecnológico.</p>
+                            <p class="mt-2 text-gray-400"><strong class="text-white">Servicios:</strong> Diseño UI/UX, Desarrollo Web, Estrategia SEO.</p>
+                            <a href="#" class="inline-block mt-4 text-white font-semibold hover:text-indigo-400 transition">Ver caso de estudio &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Caso de Estudio 2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                         <div class="order-2 md:order-1">
+                            <h3 class="text-2xl font-bold text-indigo-400">EducaNext - Plataforma E-learning</h3>
+                            <p class="mt-4 text-gray-300">Creamos desde cero una plataforma de aprendizaje online con cursos en video, seguimiento de progreso y certificaciones. La arquitectura escalable soporta miles de usuarios simultáneos.</p>
+                            <p class="mt-2 text-gray-400"><strong class="text-white">Servicios:</strong> App Web, Diseño UI/UX, Infraestructura Cloud.</p>
+                            <a href="#" class="inline-block mt-4 text-white font-semibold hover:text-indigo-400 transition">Ver caso de estudio &rarr;</a>
+                        </div>
+                        <img src="galeria/foto5.png" alt="Proyecto 2" class="order-1 md:order-2 rounded-lg shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Imagen+no+encontrada';">
+                    </div>
+                    <!-- Caso de Estudio 3 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <img src="galeria/foto6.png" alt="Proyecto 3" class="rounded-lg shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Imagen+no+encontrada';">
+                        <div>
+                            <h3 class="text-2xl font-bold text-indigo-400">FitLife - App de Fitness</h3>
+                            <p class="mt-4 text-gray-300">Desarrollamos una aplicación móvil para iOS y Android que ofrece rutinas de ejercicio personalizadas, seguimiento de actividad y gamificación para mantener la motivación de los usuarios.</p>
+                            <p class="mt-2 text-gray-400"><strong class="text-white">Servicios:</strong> Desarrollo Móvil, Diseño UI/UX, Backend API.</p>
+                            <a href="#" class="inline-block mt-4 text-white font-semibold hover:text-indigo-400 transition">Ver caso de estudio &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN NOSOTROS (Pestaña) ========== -->
+        <section id="nosotros" class="page-section hidden py-20 bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Somos Arquitectos de Soluciones Digitales</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">En Quantum, no solo escribimos código o diseñamos interfaces. Construimos puentes entre las ideas de nuestros clientes y el éxito en el mundo digital.</p>
+                </div>
+                <!-- Misión y Visión -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                    <div class="bg-gray-900 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestra Misión</h3>
+                        <p class="text-gray-300">Empoderar a empresas de todos los tamaños con soluciones tecnológicas innovadoras, personalizadas y de alta calidad que generen un impacto medible y duradero.</p>
+                    </div>
+                     <div class="bg-gray-900 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestra Visión</h3>
+                        <p class="text-gray-300">Ser la agencia digital líder en la región, reconocida por nuestra excelencia técnica, nuestra creatividad y por construir relaciones de confianza a largo plazo con nuestros clientes.</p>
+                    </div>
+                </div>
+                <!-- Valores -->
+                <div class="mb-20">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-12">Nuestros Valores</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div><i data-lucide="users" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Colaboración</h4></div>
+                        <div><i data-lucide="lightbulb" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Innovación</h4></div>
+                        <div><i data-lucide="gem" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Calidad</h4></div>
+                        <div><i data-lucide="shield-check" class="mx-auto h-10 w-10 text-indigo-400 mb-3"></i><h4 class="text-xl font-semibold">Integridad</h4></div>
+                    </div>
+                </div>
+                <!-- Equipo -->
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-12">Conoce a Nuestro Equipo</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto10.png" alt="Foto de Ana Torres" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=AT';"><h4 class="mt-4 text-xl font-semibold text-white">Ana Torres</h4><p class="text-indigo-400">Directora General y Fundadora</p></div>
+                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto2.png" alt="Foto de David Chen" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=DC';"><h4 class="mt-4 text-xl font-semibold text-white">David Chen</h4><p class="text-indigo-400">Director de Tecnología (CTO)</p></div>
+                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto3.png" alt="Foto de Sofía Rossi" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=SR';"><h4 class="mt-4 text-xl font-semibold text-white">Sofía Rossi</h4><p class="text-indigo-400">Directora de Diseño (CDO)</p></div>
+                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto7.png" alt="Foto de Carlos Vega" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=CV';"><h4 class="mt-4 text-xl font-semibold text-white">Carlos Vega</h4><p class="text-indigo-400">Líder de Desarrollo Backend</p></div>
+                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto8.png" alt="Foto de Elena Mora" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=EM';"><h4 class="mt-4 text-xl font-semibold text-white">Elena Mora</h4><p class="text-indigo-400">Especialista en Marketing Digital</p></div>
+                        <div class="text-center p-6 bg-gray-900 rounded-lg"><img class="w-24 h-24 rounded-full mx-auto shadow-lg object-cover" src="galeria/foto9.png" alt="Foto de Javier Núñez" onerror="this.onerror=null;this.src='https://placehold.co/200x200/22C55E/FFFFFF?text=JN';"><h4 class="mt-4 text-xl font-semibold text-white">Javier Núñez</h4><p class="text-indigo-400">Arquitecto de Soluciones Cloud</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN TESTIMONIOS (Pestaña) ========== -->
+        <section id="testimonios" class="page-section hidden py-20 bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">La Voz de Nuestros Clientes</h2>
+                     <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">La confianza es nuestro mayor activo. Esto es lo que dicen quienes han trabajado con nosotros.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <!-- Testimonios -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"Quantum transformó nuestra visión en una realidad digital impresionante. Su profesionalismo es inigualable."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto2.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=CE';"><div class="ml-4"><p class="font-semibold text-white">Carla Estrada</p><p class="text-sm text-gray-400">CEO de Innovatech</p></div></div></div>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"El equipo no solo entregó un producto de alta calidad, sino que nos asesoró en cada paso. Los recomiendo al 100%."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto3.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=MJ';"><div class="ml-4"><p class="font-semibold text-white">Marcos Jiménez</p><p class="text-sm text-gray-400">Fundador de Café del Sol</p></div></div></div>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"La nueva app móvil superó nuestras expectativas. El feedback de los usuarios ha sido increíble. ¡Gran trabajo!"</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto10.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=LR';"><div class="ml-4"><p class="font-semibold text-white">Laura Reyes</p><p class="text-sm text-gray-400">Directora de Producto en FitLife</p></div></div></div>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"Gracias a su estrategia SEO, nuestro tráfico orgánico se triplicó en seis meses. Son verdaderos expertos."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto5.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=FG';"><div class="ml-4"><p class="font-semibold text-white">Fernando Garza</p><p class="text-sm text-gray-400">Gerente de Marketing en EcoVentures</p></div></div></div>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"La migración a la nube fue impecable. Nuestro sistema es ahora más rápido y seguro que nunca."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto1.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=RM';"><div class="ml-4"><p class="font-semibold text-white">Ricardo Morales</p><p class="text-sm text-gray-400">CTO en LogiCorp</p></div></div></div>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg"><p class="text-gray-300 italic">"El diseño de nuestra tienda online es elegante y funcional. Las ventas han aumentado un 40% desde el lanzamiento."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/foto6.png" alt="Foto de perfil" onerror="this.onerror=null;this.src='https://placehold.co/100x100/22C55E/FFFFFF?text=VP';"><div class="ml-4"><p class="font-semibold text-white">Valeria Ponce</p><p class="text-sm text-gray-400">Fundadora de Moda Urbana</p></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN CONTACTO (Pestaña) ========== -->
+        <section id="contacto" class="page-section hidden py-20 bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Hablemos de tu Próximo Proyecto</h2>
+                    <p class="mt-4 text-lg text-gray-400">Estamos listos para escuchar tu idea y convertirla en una solución digital exitosa. Contáctanos.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Formulario de Contacto -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Envíanos un Mensaje</h3>
+                        <form action="#" method="POST" class="space-y-6">
+                            <div><label for="name" class="sr-only">Nombre</label><input type="text" name="name" id="name" autocomplete="name" required class="w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Tu Nombre"></div>
+                            <div><label for="email" class="sr-only">Email</label><input type="email" name="email" id="email" autocomplete="email" required class="w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Tu Correo Electrónico"></div>
+                            <div><label for="message" class="sr-only">Mensaje</label><textarea id="message" name="message" rows="4" required class="w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Cuéntanos sobre tu proyecto..."></textarea></div>
+                            <div><button type="submit" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors duration-300">Enviar Mensaje</button></div>
                         </form>
                     </div>
-                </aside>
-            </div>
-        </div>
-    </main>
+                    <!-- Información de Contacto y FAQ -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Información de Contacto</h3>
+                        <div class="space-y-4 text-gray-300">
+                            <p class="flex items-center"><i data-lucide="map-pin" class="w-5 h-5 mr-3 text-indigo-400"></i> Plaza Azcuénaga (Av. 19 y 44), La Plata, Argentina</p>
+                            <p class="flex items-center"><i data-lucide="phone" class="w-5 h-5 mr-3 text-indigo-400"></i> +54 9 221 123-4567</p>
+                            <p class="flex items-center"><i data-lucide="mail" class="w-5 h-5 mr-3 text-indigo-400"></i> hola@quantumdigital.com.ar</p>
+                        </div>
+                        <div class="mt-8">
+                             <iframe class="w-full h-64 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.748377708794!2d-57.94258962429696!3d-34.91276397284795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e61c28c83e79%3A0x5371887337346c8e!2sPlaza%20Azcu%C3%A9naga!5e0!3m2!1ses-419!2sar!4v1720467812988!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Secciones</h4>
-                    <ul>
-                        <li><a href="#politica">Política</a></li>
-                        <li><a href="#economia">Economía</a></li>
-                        <li><a href="#internacionales">Internacionales</a></li>
-                        <li><a href="#sociedad">Sociedad</a></li>
-                        <li><a href="#opinion">Opinión</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Dirección: Av. Principal 123, Ciudad</p>
-                    <p>Teléfono: (123) 456-7890</p>
-                    <p>Email: contacto@noticiasdeldia.com</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Redes Sociales</h4>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <div class="mt-12">
+                            <h3 class="text-2xl font-bold mb-6">Preguntas Frecuentes</h3>
+                            <div id="faq-accordion" class="space-y-4">
+                                <!-- FAQ 1 -->
+                                <div class="bg-gray-900 rounded-lg">
+                                    <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+                                        <span>¿Cuánto tiempo toma un proyecto?</span>
+                                        <i data-lucide="plus" class="icon-plus"></i><i data-lucide="minus" class="icon-minus"></i>
+                                    </button>
+                                    <div class="faq-answer px-4 pb-4 text-gray-400">La duración varía según la complejidad. Un sitio web institucional puede tomar de 4 a 8 semanas, mientras que una aplicación web compleja puede requerir varios meses.</div>
+                                </div>
+                                <!-- FAQ 2 -->
+                                <div class="bg-gray-900 rounded-lg">
+                                    <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+                                        <span>¿Ofrecen mantenimiento post-lanzamiento?</span>
+                                        <i data-lucide="plus" class="icon-plus"></i><i data-lucide="minus" class="icon-minus"></i>
+                                    </button>
+                                    <div class="faq-answer px-4 pb-4 text-gray-400">Sí, ofrecemos planes de mantenimiento y soporte para garantizar que tu sitio o aplicación esté siempre actualizado, seguro y funcionando de manera óptima.</div>
+                                </div>
+                                <!-- FAQ 3 -->
+                                <div class="bg-gray-900 rounded-lg">
+                                    <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+                                        <span>¿Cómo es el proceso de pago?</span>
+                                        <i data-lucide="plus" class="icon-plus"></i><i data-lucide="minus" class="icon-minus"></i>
+                                    </button>
+                                    <div class="faq-answer px-4 pb-4 text-gray-400">Generalmente trabajamos con un pago inicial del 50% para comenzar el proyecto y el 50% restante al finalizar, antes del lanzamiento. Somos flexibles y podemos adaptarnos a tus necesidades.</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Noticias del Día. Todos los derechos reservados.</p>
-                <p><a href="#">Términos y Condiciones</a> | <a href="#">Política de Privacidad</a></p>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">&copy; 2024 Soluciones Digitales Quantum. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin"></i></a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="github"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // --- SCRIPT PARA ICONOS DE LUCIDE ---
+        lucide.createIcons();
+
+        // --- SCRIPT PARA EL MENÚ MÓVIL ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- SCRIPT PARA LA NAVEGACIÓN POR PESTAÑAS Y FAQ ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+
+            function showTab(targetId) {
+                pageSections.forEach(section => {
+                    section.classList.add('hidden');
+                    section.classList.remove('animate-fadeIn');
+                });
+
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                    if (targetId !== 'hero') {
+                         targetSection.classList.add('animate-fadeIn');
+                    }
+                }
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.toggle('active', link.dataset.target === targetId);
+                });
+                
+                mobileMenu.classList.add('hidden');
+                window.scrollTo(0, 0);
+                lucide.createIcons(); // Re-renderizar iconos en la nueva pestaña
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetId = this.dataset.target;
+                    if (targetId) {
+                        showTab(targetId);
+                    }
+                });
+            });
+
+            // --- SCRIPT PARA EL ACORDEÓN DE FAQ ---
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-question.active');
+                    if (currentlyActive && currentlyActive !== question) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    question.classList.toggle('active');
+                });
+            });
+
+            // Mostrar la pestaña de inicio por defecto
+            showTab('hero');
+            setTimeout(() => lucide.createIcons(), 100);
+        });
+    </script>
+
 </body>
 </html>
