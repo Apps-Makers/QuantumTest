@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluciones Digitales Quantum - Potenciamos tu Presencia Online</title>
     
+    <!-- SEO Meta Tags -->
+    <title>Desarrollo Web Frontend y Diseño UI/UX en La Plata | Quantum</title>
+    <meta name="description" content="Potenciamos tu presencia online con sitios web estáticos, diseño UI/UX y optimización SEO. Transformamos tus ideas en experiencias digitales profesionales en La Plata, Buenos Aires.">
+    <meta name="keywords" content="desarrollo web, frontend, diseño web, La Plata, UI, UX, SEO, sitios web, portfolio, catalogo digital, quantum">
+    <link rel="canonical" href="https://quantumweb.netlify.app/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantumweb.netlify.app/">
+    <meta property="og:title" content="Desarrollo Web Frontend y Diseño UI/UX en La Plata | Quantum">
+    <meta property="og:description" content="Potenciamos tu presencia online con sitios web estáticos, diseño UI/UX y optimización SEO. Transformamos tus ideas en experiencias digitales profesionales.">
+    <meta property="og:image" content="https://quantumweb.netlify.app/galeria/og-image.png"> <!-- Reemplazar con una URL a una imagen para compartir (ej. 1200x630px) -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://quantumweb.netlify.app/">
+    <meta property="twitter:title" content="Desarrollo Web Frontend y Diseño UI/UX en La Plata | Quantum">
+    <meta property="twitter:description" content="Potenciamos tu presencia online con sitios web estáticos, diseño UI/UX y optimización SEO. Transformamos tus ideas en experiencias digitales profesionales.">
+    <meta property="twitter:image" content="https://quantumweb.netlify.app/galeria/og-image.png"> <!-- Reemplazar con una URL a una imagen para compartir -->
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -116,6 +135,50 @@
         }
 
     </style>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Soluciones Digitales Quantum",
+      "image": "https://quantumweb.netlify.app/galeria/logo-quantum.png",
+      "@id": "https://quantumweb.netlify.app/",
+      "url": "https://quantumweb.netlify.app/",
+      "telephone": "+5491164020912",
+      "email": "theaiproyectcrew@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Diagonal 76 289 2D",
+        "addressLocality": "La Plata",
+        "addressRegion": "Buenos Aires",
+        "postalCode": "B1900",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -34.919436,
+        "longitude": -57.967218
+      },
+      "description": "Agencia de desarrollo web frontend y diseño UI/UX en La Plata, especializada en sitios web estáticos, catálogos digitales y optimización SEO.",
+      "servesCuisine": "",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-gray-900 text-white">
 
@@ -190,7 +253,7 @@
                     <!-- Columna de Imagen -->
                     <div class="relative mt-12 md:mt-0">
                         <div class="animated animate-fadeInRight">
-                            <img src="galeria/foto_hero.png" alt="Profesional del equipo Quantum trabajando" class="relative rounded-lg mx-auto z-10" onerror="this.onerror=null; this.src='https://placehold.co/600x700/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');">
+                            <img src="galeria/foto_hero.png" alt="Equipo de Soluciones Digitales Quantum trabajando en un proyecto de desarrollo web." class="relative rounded-lg mx-auto z-10" onerror="this.onerror=null; this.src='https://placehold.co/600x700/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');">
                             <!-- Formas decorativas -->
                             <div class="absolute -top-8 -right-8 w-40 h-40 bg-indigo-500/20 rounded-full blur-2xl"></div>
                             <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-purple-500/20 rounded-lg blur-2xl transform rotate-45"></div>
@@ -209,21 +272,21 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
                     <!-- Tarjetas de Servicio -->
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="layout-template"></i></div>
                         <h3 class="text-xl font-bold mb-4">Diseño Web UI/UX</h3>
                         <p class="text-gray-400">Investigamos a fondo a tus usuarios para crear interfaces intuitivas, atractivas y accesibles. Desde wireframes y prototipos hasta el diseño final, nos aseguramos de que cada interacción sea fluida y memorable.</p>
-                    </div>
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
+                    </article>
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="code-2"></i></div>
                         <h3 class="text-xl font-bold mb-4">Desarrollo Web Frontend</h3>
                         <p class="text-gray-400">Creamos la parte visible e interactiva de tu sitio web con HTML, CSS y JavaScript. Nos especializamos en maquetación web responsiva y optimizada para ofrecer una experiencia de usuario excepcional en cualquier dispositivo.</p>
-                    </div>
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
+                    </article>
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="search"></i></div>
                         <h3 class="text-xl font-bold mb-4">Optimización SEO</h3>
                         <p class="text-gray-400">Mejoramos la visibilidad de tu sitio web en buscadores como Google. Aplicamos las mejores prácticas de SEO técnico y de contenido desde la base para asegurar que tus clientes potenciales te encuentren.</p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -239,42 +302,33 @@
                 <div id="product-filters" class="flex justify-center flex-wrap gap-3 md:gap-4 mb-12 scroll-animate">
                     <button data-filter="all" class="filter-btn active px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300">Todos</button>
                     <button data-filter="corporativos" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Corporativos</button>
-                    <button data-filter="landing" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Landing Pages</button>
                     <button data-filter="portfolio" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Portfolios</button>
                     <button data-filter="catalogos" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Catálogos</button>
                 </div>
                 <!-- Product Gallery -->
-                <div id="product-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div id="product-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
                     <!-- Corporativos -->
                     <div class="product-item group" data-category="corporativos">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-consultora.png" alt="Web para Consultora" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web para Consultora</h3></div></div>
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-consultora.png" alt="Diseño de sitio web para una consultora financiera." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web para Consultora</h3></div></div>
                     </div>
                     <div class="product-item group" data-category="corporativos">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-institucional.png" alt="Sitio Institucional" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Sitio Institucional</h3></div></div>
-                    </div>
-
-                    <!-- Landing Pages -->
-                    <div class="product-item group" data-category="landing">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/landing-evento.png" alt="Landing Page para Evento" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Landing Page para Evento</h3></div></div>
-                    </div>
-                     <div class="product-item group" data-category="landing">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/landing-leads.png" alt="Página de Captura de Leads" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Página de Captura de Leads</h3></div></div>
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-institucional.png" alt="Sitio web institucional para una organización sin fines de lucro." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Sitio Institucional</h3></div></div>
                     </div>
 
                     <!-- Portfolios -->
                     <div class="product-item group" data-category="portfolio">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-fotografo.png" alt="Portfolio para Fotógrafo" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio para Fotógrafo</h3></div></div>
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-fotografo.png" alt="Portfolio web minimalista para un fotógrafo profesional." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio para Fotógrafo</h3></div></div>
                     </div>
                     <div class="product-item group" data-category="portfolio">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-desarrollador.png" alt="Portfolio de Desarrollador" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio de Desarrollador</h3></div></div>
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-desarrollador.png" alt="Portfolio personal para un desarrollador frontend." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio de Desarrollador</h3></div></div>
                     </div>
 
                     <!-- Catalogos -->
                     <div class="product-item group" data-category="catalogos">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/catalogo-moda.png" alt="Catálogo de Moda" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Catálogo de Moda</h3></div></div>
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/catalogo-moda.png" alt="Catálogo digital interactivo para una marca de moda." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Catálogo de Moda</h3></div></div>
                     </div>
                     <div class="product-item group" data-category="catalogos">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/catalogo-productos.png" alt="Catálogo de Productos" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Catálogo de Productos</h3></div></div>
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/catalogo-productos.png" alt="Catálogo de productos para una empresa de manufactura." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Catálogo de Productos</h3></div></div>
                     </div>
                 </div>
             </div>
@@ -289,37 +343,37 @@
                 </div>
                 <!-- Misión y Visión -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 stagger-animation">
-                    <div class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestra Misión</h3>
                         <p class="text-gray-300">Empoderar a empresas de todos los tamaños con soluciones tecnológicas innovadoras, personalizadas y de alta calidad que generen un impacto medible y duradero.</p>
-                    </div>
-                     <div class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    </article>
+                     <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestra Visión</h3>
                         <p class="text-gray-300">Aspiramos a ser un referente de confianza en el desarrollo de sitios web de alta calidad, destacándonos por nuestra atención al detalle y por construir relaciones sólidas y duraderas con cada uno de nuestros clientes.</p>
-                    </div>
+                    </article>
                 </div>
                 <!-- Contenido Adicional -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 stagger-animation">
-                    <div class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestros Valores</h3>
                         <ul class="space-y-3 text-gray-300">
                             <li class="flex items-start"><i data-lucide="shield-check" class="w-5 h-5 mr-3 mt-1 text-green-400"></i><span><strong class="text-white">Calidad:</strong> Nos obsesionamos con los detalles y entregamos productos pulidos y profesionales.</span></li>
                             <li class="flex items-start"><i data-lucide="users" class="w-5 h-5 mr-3 mt-1 text-green-400"></i><span><strong class="text-white">Colaboración:</strong> Creemos en el trabajo en equipo, tanto interno como con nuestros clientes.</span></li>
                             <li class="flex items-start"><i data-lucide="lightbulb" class="w-5 h-5 mr-3 mt-1 text-green-400"></i><span><strong class="text-white">Innovación:</strong> Nos mantenemos actualizados para aplicar las mejores y más nuevas tecnologías.</span></li>
                         </ul>
-                    </div>
-                    <div class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    </article>
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestro Proceso</h3>
                         <p class="text-gray-300">Nuestro método de trabajo es transparente y colaborativo. Inicia con una fase de descubrimiento para entender tus metas, seguido del diseño y desarrollo, con revisiones constantes para asegurar que el resultado final sea exactamente lo que esperas.</p>
-                    </div>
-                    <div class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    </article>
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">El Equipo</h3>
                         <p class="text-gray-300">Somos un equipo apasionado de diseñadores y desarrolladores frontend con un objetivo en común: crear experiencias web memorables. Combinamos creatividad y precisión técnica para llevar tus ideas a la realidad.</p>
-                    </div>
-                    <div class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    </article>
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">¿Por qué Elegirnos?</h3>
                         <p class="text-gray-300">Nos diferenciamos por nuestro enfoque personalizado. No ofrecemos soluciones genéricas; nos sumergimos en tu proyecto para crear un sitio web único que represente tu marca y conecte con tu audiencia de manera efectiva.</p>
-                    </div>
+                    </article>
                 </div>
                 
                 <!-- Testimonios -->
@@ -328,8 +382,8 @@
                      <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate">La confianza es nuestro mayor activo. Esto es lo que dicen quienes han trabajado con nosotros.</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto stagger-animation">
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate"><p class="text-gray-300 italic">"Quantum transformó nuestra visión en una realidad digital impresionante. Su profesionalismo es inigualable."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente1.png" alt="Foto de perfil" onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Carla Estrada</p><p class="text-sm text-gray-400">CEO de Innovatech</p></div></div></div>
-                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate"><p class="text-gray-300 italic">"El equipo no solo entregó un producto de alta calidad, sino que nos asesoró en cada paso. Los recomiendo al 100%."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente2.png" alt="Foto de perfil" onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Marcos Jiménez</p><p class="text-sm text-gray-400">Fundador de Café del Sol</p></div></div></div>
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate"><p class="text-gray-300 italic">"Quantum transformó nuestra visión en una realidad digital impresionante. Su profesionalismo es inigualable."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente1.png" alt="Foto de perfil de Carla Estrada, dueña de una tienda de ropa." onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Carla Estrada</p><p class="text-sm text-gray-400">Dueña de Tienda de Ropa</p></div></div></article>
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate"><p class="text-gray-300 italic">"El equipo no solo entregó un producto de alta calidad, sino que nos asesoró en cada paso. Los recomiendo al 100%."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente2.png" alt="Foto de perfil de Marcos Jiménez, dueño de una cafetería." onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Marcos Jiménez</p><p class="text-sm text-gray-400">Dueño de Cafetería</p></div></div></article>
                 </div>
             </div>
         </section>
@@ -346,10 +400,10 @@
                     <div class="scroll-animate">
                         <h3 class="text-2xl font-bold mb-6 text-center">Información de Contacto</h3>
                         <div class="space-y-4 text-gray-300 bg-gray-900 p-8 rounded-lg shadow-lg">
-                            <p class="flex items-center text-lg"><i data-lucide="map-pin" class="w-6 h-6 mr-4 text-indigo-400 flex-shrink-0"></i> Diagonal 76 289 2D, La Plata, Argentina</p>
-                            <a href="https://wa.me/54901164020912" target="_blank" class="flex items-center text-lg hover:text-indigo-400 transition-colors duration-300">
+                            <p class="flex items-center text-lg"><i data-lucide="map-pin" class="w-6 h-6 mr-4 text-indigo-400 flex-shrink-0"></i> Diagonal 76 289 2D, La Plata, Buenos Aires, Argentina</p>
+                            <a href="https://wa.me/5491164020912" target="_blank" class="flex items-center text-lg hover:text-indigo-400 transition-colors duration-300">
                                 <i data-lucide="phone" class="w-6 h-6 mr-4 text-indigo-400 flex-shrink-0"></i>
-                                +54 9 011 6402-0912
+                                +54 9 11 6402-0912
                             </a>
                             <button id="email-copy-button" class="flex items-center text-lg w-full text-left hover:text-indigo-400 transition-colors duration-300">
                                 <i data-lucide="mail" class="w-6 h-6 mr-4 text-indigo-400 flex-shrink-0"></i>
