@@ -196,7 +196,7 @@
                 <!-- Navegación de Escritorio -->
                 <nav id="desktop-nav" class="hidden md:flex md:items-center md:space-x-8 text-sm">
                     <a href="#" data-target="hero" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 active">Inicio</a>
-                    <a href="#" data-target="servicios" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Servicios</a>
+                    <a href="#" data-target="precios" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Precios</a>
                     <a href="#" data-target="productos" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Portfolio</a>
                     <a href="#" data-target="porque-elegirnos" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">¿Por qué elegirnos?</a>
                     <a href="#" data-target="contacto" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
@@ -215,7 +215,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#" data-target="hero" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium active">Inicio</a>
-                <a href="#" data-target="servicios" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Servicios</a>
+                <a href="#" data-target="precios" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Precios</a>
                 <a href="#" data-target="productos" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
                 <a href="#" data-target="porque-elegirnos" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">¿Por qué elegirnos?</a>
                 <a href="#" data-target="contacto" class="nav-link block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contacto</a>
@@ -223,76 +223,169 @@
         </div>
     </header>
 
-    <main class="pt-16">
+    <main>
         <!-- ========== SECCIÓN HERO (Pestaña Inicio) ========== -->
-        <section id="hero" class="page-section relative overflow-hidden bg-gray-900">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <!-- Columna de Texto -->
-                    <div class="text-center md:text-left">
-                        <h1 class="animated animate-fadeInUp text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                            Transformamos Ideas en <span class="text-indigo-400">Experiencias Digitales</span>
-                        </h1>
-                        <p class="animated animate-fadeInUp animation-delay-200 mt-6 max-w-xl mx-auto md:mx-0 text-lg md:text-xl text-gray-300">
-                            Somos una agencia de desarrollo y diseño que impulsa a las marcas a alcanzar su máximo potencial en el mundo digital.
-                        </p>
-                        <ul class="mt-8 space-y-4 text-left max-w-md mx-auto md:mx-0">
-                            <li class="animated animate-fadeInUp animation-delay-400 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Diseño Innovador:</strong> Interfaces atractivas y centradas en el usuario.</span></li>
-                            <li class="animated animate-fadeInUp animation-delay-600 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Código Optimizado:</strong> Soluciones rápidas, seguras y accesibles.</span></li>
-                            <li class="animated animate-fadeInUp animation-delay-800 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Soporte Dedicado:</strong> Acompañamiento constante en cada etapa.</span></li>
-                        </ul>
-                        <div class="animated animate-fadeInUp animation-delay-800 mt-10 flex flex-wrap justify-center md:justify-start gap-4">
-                            <a href="#" data-target="contacto" class="nav-link bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
-                                Empezar Proyecto
-                            </a>
-                            <a href="#" data-target="productos" class="nav-link bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
-                                Ver Portfolio
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Columna de Imagen -->
-                    <div class="relative mt-12 md:mt-0">
-                        <div class="animated animate-fadeInRight">
-                            <img src="galeria/foto_hero.png" alt="Equipo de Soluciones Digitales Quantum trabajando en un proyecto de desarrollo web." class="relative rounded-lg mx-auto z-10" onerror="this.onerror=null; this.src='https://placehold.co/600x700/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');">
-                            <!-- Formas decorativas -->
-                            <div class="absolute -top-8 -right-8 w-40 h-40 bg-indigo-500/20 rounded-full blur-2xl"></div>
-                            <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-purple-500/20 rounded-lg blur-2xl transform rotate-45"></div>
-                        </div>
-                    </div>
+        <section id="hero" class="page-section relative flex items-center justify-center min-h-screen text-white text-center overflow-hidden pt-16">
+             <!-- Background Image -->
+             <div class="absolute inset-0 z-0">
+                <img src="galeria/foto_hero.png" alt="Equipo de desarrollo web trabajando en una oficina moderna." class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/111827/FFFFFF?text=Falta+imagen:%0Agaleria/foto_hero.png';">
+                <!-- Overlay for readability -->
+                <div class="absolute inset-0 bg-gray-900/70"></div>
+            </div>
+        
+            <!-- Text Content -->
+            <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="animated animate-fadeInUp text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Transformamos Ideas en <span class="text-indigo-400">Experiencias Digitales</span>
+                </h1>
+                <p class="animated animate-fadeInUp animation-delay-200 mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-300">
+                    Somos una agencia de desarrollo y diseño que impulsa a las marcas a alcanzar su máximo potencial en el mundo digital.
+                </p>
+                <ul class="mt-8 space-y-4 max-w-md mx-auto text-left">
+                   <li class="animated animate-fadeInUp animation-delay-400 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Diseño Innovador:</strong> Interfaces atractivas y centradas en el usuario.</span></li>
+                   <li class="animated animate-fadeInUp animation-delay-600 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Codigo personalizado:</strong> Soluciones rápidas, seguras y accesibles con tu diseño personal.</span></li>
+                   <li class="animated animate-fadeInUp animation-delay-800 flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"></i><span><strong class="text-white">Soporte Dedicado:</strong> Acompañamiento constante en cada etapa.</span></li>
+               </ul>
+                <div class="animated animate-fadeInUp animation-delay-800 mt-10 flex flex-wrap justify-center gap-4">
+                    <a href="#" data-target="contacto" class="nav-link bg-indigo-500 hover:bg-indigo-600 font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+                        Empezar Proyecto
+                    </a>
+                    <a href="#" data-target="productos" class="nav-link bg-gray-700 hover:bg-gray-600 font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+                        Ver Portfolio
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECCIÓN SERVICIOS (Pestaña) ========== -->
-        <section id="servicios" class="page-section hidden py-20 bg-gray-800">
+        <!-- ========== SECCIÓN PRECIOS (Pestaña) ========== -->
+        <section id="precios" class="page-section hidden pt-20 pb-10 bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">Nuestros Servicios Integrales</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate">Ofrecemos un ecosistema completo de soluciones digitales para llevar tu proyecto al siguiente nivel, cubriendo cada fase del ciclo de vida digital con excelencia y precisión.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">Planes de Desarrollo</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate">Elige el plan que mejor se adapte a tus necesidades. Soluciones transparentes y sin sorpresas.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
-                    <!-- Tarjetas de Servicio -->
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="layout-template"></i></div>
-                        <h3 class="text-xl font-bold mb-4">Diseño Web UI/UX</h3>
-                        <p class="text-gray-400">Investigamos a fondo a tus usuarios para crear interfaces intuitivas, atractivas y accesibles. Desde wireframes y prototipos hasta el diseño final, nos aseguramos de que cada interacción sea fluida y memorable.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation max-w-5xl mx-auto">
+                    <!-- Plan Lite -->
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                        <h3 class="text-2xl font-bold text-green-400 mb-2">🟢 Lite (1 sección)</h3>
+                        <p class="text-4xl font-bold text-white mb-6">$120.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Diseño personalizado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Cantidad de secciones: 1</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Hosting configurado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Carga de textos e imágenes</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Adaptado a celulares</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Optimización SEO básica</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Integración redes y contacto</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Posibilidad de tener Dominio premium</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Posibilidad de tener Mantenimiento</li>
+                        </ul>
+                        <a href="#" data-target="contacto" class="nav-link mt-auto w-full text-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">Contratar</a>
                     </article>
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="code-2"></i></div>
-                        <h3 class="text-xl font-bold mb-4">Desarrollo Web Frontend</h3>
-                        <p class="text-gray-400">Creamos la parte visible e interactiva de tu sitio web con HTML, CSS y JavaScript. Nos especializamos en maquetación web responsiva y optimizada para ofrecer una experiencia de usuario excepcional en cualquier dispositivo.</p>
+                    <!-- Plan Mediano -->
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-2">🔵 Mediano (3 secciones)</h3>
+                        <p class="text-4xl font-bold text-white mb-6">$150.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Diseño personalizado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Cantidad de secciones: 3</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Hosting configurado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Carga de textos e imágenes</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Adaptado a celulares</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Optimización SEO básica</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Integración redes y contacto</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Posibilidad de tener Dominio premium</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Posibilidad de tener Mantenimiento</li>
+                        </ul>
+                        <a href="#" data-target="contacto" class="nav-link mt-auto w-full text-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">Contratar</a>
                     </article>
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white mb-6"><i data-lucide="search"></i></div>
-                        <h3 class="text-xl font-bold mb-4">Optimización SEO</h3>
-                        <p class="text-gray-400">Mejoramos la visibilidad de tu sitio web en buscadores como Google. Aplicamos las mejores prácticas de SEO técnico y de contenido desde la base para asegurar que tus clientes potenciales te encuentren.</p>
+                    <!-- Plan Grande -->
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                        <h3 class="text-2xl font-bold text-red-400 mb-2">🔴 Grande (7 secciones)</h3>
+                        <p class="text-4xl font-bold text-white mb-6">$220.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Diseño personalizado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Cantidad de secciones: 7</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Hosting configurado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Carga de textos e imágenes</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Adaptado a celulares</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Optimización SEO básica</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Integración redes y contacto</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Posibilidad de tener Dominio premium</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Posibilidad de tener Mantenimiento</li>
+                        </ul>
+                        <a href="#" data-target="contacto" class="nav-link mt-auto w-full text-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">Contratar</a>
                     </article>
                 </div>
+                
+                <!-- Planes de Mantenimiento -->
+                <div class="text-center mt-20 mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">...y uno de los siguientes mantenimientos</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-animation max-w-7xl mx-auto">
+                     <!-- Gratuito -->
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-gray-700">
+                        <h3 class="text-xl font-bold text-gray-400 mb-2">Gratuito</h3>
+                        <p class="text-3xl font-bold text-white mb-6">$0 <span class="text-lg font-normal text-gray-400">ARS</span></p>
+                        <ul class="space-y-3 text-gray-400 mb-8 flex-grow text-sm">
+                            <li class="flex items-center"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Mantenimiento del servidor</li>
+                            <li class="flex items-center"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Copias de seguridad</li>
+                            <li class="flex items-center"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Corrección de enlaces rotos</li>
+                            <li class="flex items-center"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Actualizaciones menores</li>
+                            <li class="flex items-center"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Dominio personalizado</li>
+                            <li class="flex items-center"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Inclusión de nuevos elementos</li>
+                            <li class="flex items-center"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Soporte prioritario</li>
+                        </ul>
+                    </article>
+                    <!-- Básico -->
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                        <h3 class="text-xl font-bold text-green-400 mb-2">Básico</h3>
+                        <p class="text-3xl font-bold text-white mb-6">$30.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow text-sm">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Mantenimiento del servidor</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Copias de seguridad</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Corrección de enlaces rotos</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Actualizaciones Simples (hasta 2/mes)</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Dominio personalizado</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Inclusión de nuevos elementos</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Soporte prioritario</li>
+                        </ul>
+                    </article>
+                    <!-- Intermedio -->
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                        <h3 class="text-xl font-bold text-blue-400 mb-2">Intermedio</h3>
+                        <p class="text-3xl font-bold text-white mb-6">$50.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow text-sm">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Mantenimiento del servidor</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Copias de seguridad</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Corrección de enlaces rotos</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Actualizaciones Simples (hasta 5/mes)</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Dominio personalizado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Inclusión de nuevos elementos (hasta 1/mes)</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2"></i>Soporte prioritario</li>
+                        </ul>
+                    </article>
+                    <!-- Avanzado -->
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                        <h3 class="text-xl font-bold text-red-400 mb-2">Avanzado</h3>
+                        <p class="text-3xl font-bold text-white mb-6">$80.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow text-sm">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Mantenimiento del servidor</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Copias de seguridad</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Corrección de enlaces rotos</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Actualizaciones Simples (hasta 10/mes)</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Dominio personalizado</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Inclusión de nuevos elementos (hasta 3/mes)</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i>Soporte prioritario</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="text-center text-gray-400 mt-12 text-sm max-w-3xl mx-auto scroll-animate">Nota: El Plan Gratuito sólo cubre la puesta en marcha del hosting; no incluye monitoreo, respaldos ni correcciones ante eventualidades o caidas del mismo.</p>
             </div>
         </section>
 
         <!-- ========== SECCIÓN PORTFOLIO (Pestaña Productos) ========== -->
-        <section id="productos" class="page-section hidden py-20 bg-gray-900">
+        <section id="productos" class="page-section hidden pt-20 pb-10 bg-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">Nuestro Portfolio de Sitios Web</h2>
@@ -335,7 +428,7 @@
         </section>
 
         <!-- ========== SECCIÓN POR QUÉ ELEGIRNOS (Pestaña) ========== -->
-        <section id="porque-elegirnos" class="page-section hidden py-20 bg-gray-800">
+        <section id="porque-elegirnos" class="page-section hidden pt-20 pb-10 bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">¿Por qué Elegirnos?</h2>
@@ -353,7 +446,7 @@
                     </article>
                 </div>
                 <!-- Contenido Adicional -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 stagger-animation">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-10 stagger-animation">
                     <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestros Valores</h3>
                         <ul class="space-y-3 text-gray-300">
@@ -368,7 +461,7 @@
                     </article>
                     <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">El Equipo</h3>
-                        <p class="text-gray-300">Somos un equipo apasionado de diseñadores y desarrolladores frontend con un objetivo en común: crear experiencias web memorables. Combinamos creatividad y precisión técnica para llevar tus ideas a la realidad.</p>
+                        <p class="text-gray-300">Somos un equipo apasionado de diseñadores y desarrolladores con un objetivo en común: crear experiencias web memorables. Combinamos creatividad y precisión técnica para llevar tus ideas a la realidad.</p>
                     </article>
                     <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">¿Por qué Elegirnos?</h3>
@@ -389,7 +482,7 @@
         </section>
 
         <!-- ========== SECCIÓN CONTACTO (Pestaña) ========== -->
-        <section id="contacto" class="page-section hidden py-20 bg-gray-800">
+        <section id="contacto" class="page-section hidden pt-20 pb-10 bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Información de Contacto -->
                 <div class="text-center mb-16">
