@@ -401,7 +401,7 @@
                     <button data-filter="portfolio" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Portfolios</button>
                 </div>
                 <!-- Product Gallery -->
-                <div id="product-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="product-gallery" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- Corporativos -->
                     <div class="product-item group" data-category="corporativos">
                         <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-consultora.png" alt="Diseño de sitio web para una consultora financiera." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web para Consultora</h3></div></div>
@@ -599,12 +599,14 @@
                     event.preventDefault();
                     const targetId = this.dataset.target;
                     if (targetId) {
+                        // Primero, se muestra la pestaña correcta.
+                        showTab(targetId);
                         const targetSection = document.getElementById(targetId);
                         if(targetSection){
-                            // Scroll suave a la sección
+                            // Luego, se hace scroll a esa sección.
+                            // Esto asegura que el scroll se aplique después de que la sección sea visible.
                             targetSection.scrollIntoView({ behavior: 'smooth' });
                         }
-                        showTab(targetId);
                     }
                 });
             });
@@ -716,4 +718,3 @@
 
 </body>
 </html>
-
