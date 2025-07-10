@@ -39,6 +39,7 @@
         /* Estilo base para usar la fuente Inter */
         body {
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevenir scroll horizontal por animaciones */
         }
         /* Estilo para el enlace de navegación activo */
         .nav-link.active {
@@ -48,24 +49,20 @@
         
         /* --- ANIMACIONES --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -73,15 +70,8 @@
         }
 
         /* Clases para aplicar animaciones en carga inicial */
-        .animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .animate-fadeInRight {
-            animation: fadeInRight 0.8s ease-out forwards;
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.6s ease-in-out forwards;
-        }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-in-out forwards; }
         
         /* Estilos para retrasos de animación */
         .animation-delay-200 { animation-delay: 0.2s; }
@@ -90,13 +80,11 @@
         .animation-delay-800 { animation-delay: 0.8s; }
 
         /* Asegurar que los elementos animados empiecen ocultos */
-        .animated {
-            opacity: 0;
-        }
+        .animated { opacity: 0; }
 
         /* Estilos para la galería de productos/portfolio */
         .product-item {
-            transition: transform 0.4s ease, opacity 0.4s ease, width 0.4s ease, padding 0.4s ease, margin 0.4s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease;
             overflow: hidden;
         }
         .product-item.hidden {
@@ -105,6 +93,7 @@
             width: 0;
             padding: 0;
             margin: 0;
+            display: none;
         }
         .filter-btn.active {
             background-color: #6366f1; /* indigo-500 */
@@ -113,20 +102,21 @@
         }
 
         /* --- NUEVAS ANIMACIONES EN SCROLL --- */
-        /* Estado inicial de los elementos a animar */
         .scroll-animate {
             opacity: 0;
-            transform: translateY(40px);
             transition: opacity 0.6s ease-out, transform 0.8s ease-out;
         }
-        /* Estado final cuando el elemento es visible */
         .scroll-animate.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
         }
-        /* Contenedor para animaciones escalonadas */
+        .scroll-animate-fadeInUp { transform: translateY(40px); }
+        .scroll-animate-fadeInLeft { transform: translateX(-40px); }
+        .scroll-animate-fadeInRight { transform: translateX(40px); }
+        .scroll-animate-zoomIn { transform: scale(0.9); }
+        
         .stagger-animation > * {
-            transition-delay: var(--stagger-delay);
+            transition-delay: var(--stagger-delay, 0ms);
         }
         
         /* Offset para la barra de navegación fija */
@@ -264,12 +254,12 @@
         <section id="precios" class="page-section pt-20 pb-10 bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">Planes de Desarrollo</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate">Elige el plan que mejor se adapte a tus necesidades. Soluciones transparentes y sin sorpresas.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate scroll-animate-fadeInLeft">Planes de Desarrollo</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate scroll-animate-fadeInRight">Elige el plan que mejor se adapte a tus necesidades. Soluciones transparentes y sin sorpresas.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation max-w-5xl mx-auto">
                     <!-- Plan Lite -->
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate scroll-animate-zoomIn border-2 border-indigo-500/50">
                         <h3 class="text-2xl font-bold text-green-400 mb-2">🟢 Lite (1 sección)</h3>
                         <p class="text-4xl font-bold text-white mb-6">$120.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
                         <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
@@ -286,7 +276,7 @@
                         <a href="#" data-target="contacto" class="nav-link mt-auto w-full text-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">Contratar</a>
                     </article>
                     <!-- Plan Mediano -->
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate scroll-animate-zoomIn border-2 border-indigo-500/50" style="--stagger-delay: 150ms;">
                         <h3 class="text-2xl font-bold text-blue-400 mb-2">🔵 Mediano (3 secciones)</h3>
                         <p class="text-4xl font-bold text-white mb-6">$150.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
                         <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
@@ -303,7 +293,7 @@
                         <a href="#" data-target="contacto" class="nav-link mt-auto w-full text-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">Contratar</a>
                     </article>
                     <!-- Plan Grande -->
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col scroll-animate scroll-animate-zoomIn border-2 border-indigo-500/50" style="--stagger-delay: 300ms;">
                         <h3 class="text-2xl font-bold text-red-400 mb-2">🔴 Grande (7 secciones)</h3>
                         <p class="text-4xl font-bold text-white mb-6">$220.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
                         <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
@@ -323,11 +313,11 @@
                 
                 <!-- Planes de Mantenimiento -->
                 <div class="text-center mt-20 mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">...y uno de los siguientes mantenimientos</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate scroll-animate-fadeInUp">...y uno de los siguientes mantenimientos</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-animation max-w-7xl mx-auto">
                         <!-- Gratuito -->
-                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-gray-700">
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate scroll-animate-zoomIn border-2 border-gray-700">
                         <h3 class="text-xl font-bold text-gray-400 mb-2">Gratuito</h3>
                         <p class="text-3xl font-bold text-white mb-6">$0 <span class="text-lg font-normal text-gray-400">ARS</span></p>
                         <ul class="space-y-3 text-gray-400 mb-8 flex-grow text-sm">
@@ -341,7 +331,7 @@
                         </ul>
                     </article>
                     <!-- Básico -->
-                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate scroll-animate-zoomIn border-2 border-indigo-500/50" style="--stagger-delay: 150ms;">
                         <h3 class="text-xl font-bold text-green-400 mb-2">Básico</h3>
                         <p class="text-3xl font-bold text-white mb-6">$30.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
                         <ul class="space-y-3 text-gray-300 mb-8 flex-grow text-sm">
@@ -355,7 +345,7 @@
                         </ul>
                     </article>
                     <!-- Intermedio -->
-                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate scroll-animate-zoomIn border-2 border-indigo-500/50" style="--stagger-delay: 300ms;">
                         <h3 class="text-xl font-bold text-blue-400 mb-2">Intermedio</h3>
                         <p class="text-3xl font-bold text-white mb-6">$50.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
                         <ul class="space-y-3 text-gray-300 mb-8 flex-grow text-sm">
@@ -369,7 +359,7 @@
                         </ul>
                     </article>
                     <!-- Avanzado -->
-                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate border-2 border-indigo-500/50">
+                    <article class="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col scroll-animate scroll-animate-zoomIn border-2 border-indigo-500/50" style="--stagger-delay: 450ms;">
                         <h3 class="text-xl font-bold text-red-400 mb-2">Avanzado</h3>
                         <p class="text-3xl font-bold text-white mb-6">$80.000 <span class="text-lg font-normal text-gray-400">ARS</span></p>
                         <ul class="space-y-3 text-gray-300 mb-8 flex-grow text-sm">
@@ -383,7 +373,7 @@
                         </ul>
                     </article>
                 </div>
-                <p class="text-center text-gray-400 mt-12 text-sm max-w-3xl mx-auto scroll-animate">Nota: El Plan Gratuito sólo cubre la puesta en marcha del hosting; no incluye monitoreo, respaldos ni correcciones ante eventualidades o caidas del mismo.</p>
+                <p class="text-center text-gray-400 mt-12 text-sm max-w-3xl mx-auto scroll-animate scroll-animate-fadeInUp">Nota: El Plan Gratuito sólo cubre la puesta en marcha del hosting; no incluye monitoreo, respaldos ni correcciones ante eventualidades o caidas del mismo.</p>
             </div>
         </section>
 
@@ -391,40 +381,55 @@
         <section id="productos" class="page-section pt-20 pb-10 bg-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">Nuestro Portfolio de Sitios Web</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto scroll-animate">Explora los distintos prototipos y tipos de sitios web que creamos para nuestros clientes.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate scroll-animate-fadeInUp">Nuestro Portfolio de Sitios Web</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 150ms;">Explora los distintos prototipos y tipos de sitios web que creamos para nuestros clientes.</p>
                 </div>
                 <!-- Filter Buttons -->
-                <div id="product-filters" class="flex justify-center flex-wrap gap-3 md:gap-4 mb-12 scroll-animate">
+                <div id="product-filters" class="flex justify-center flex-wrap gap-3 md:gap-4 mb-12 scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 300ms;">
                     <button data-filter="all" class="filter-btn active px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300">Todos</button>
                     <button data-filter="corporativos" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Corporativos</button>
                     <button data-filter="portfolio" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Portfolios</button>
-                    <button data-filter="catalogos" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-700 hover:bg-gray-600">Catálogos</button>
                 </div>
                 <!-- Product Gallery -->
-                <div id="product-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div id="product-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animation">
                     <!-- Corporativos -->
-                    <div class="product-item group" data-category="corporativos">
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="corporativos">
                         <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-consultora.png" alt="Diseño de sitio web para una consultora financiera." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web para Consultora</h3></div></div>
                     </div>
-                    <div class="product-item group" data-category="corporativos">
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="corporativos">
                         <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-institucional.png" alt="Sitio web institucional para una organización sin fines de lucro." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Sitio Institucional</h3></div></div>
+                    </div>
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="corporativos">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-startup.png" alt="Sitio web para Startup Tecnológica." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web para Startup</h3></div></div>
+                    </div>
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="corporativos">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-restaurante.png" alt="Página Web para Restaurante." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web para Restaurante</h3></div></div>
+                    </div>
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="corporativos">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/web-inmobiliaria.png" alt="Sitio para Inmobiliaria." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Sitio Inmobiliario</h3></div></div>
+                    </div>
+                     <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="corporativos">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x400/1a202c/c7d2fe?text=Corporativo+6" alt="Ejemplo de sitio corporativo 6" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web Corporativa Moderna</h3></div></div>
                     </div>
 
                     <!-- Portfolios -->
-                    <div class="product-item group" data-category="portfolio">
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="portfolio">
                         <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-fotografo.png" alt="Portfolio web minimalista para un fotógrafo profesional." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio para Fotógrafo</h3></div></div>
                     </div>
-                    <div class="product-item group" data-category="portfolio">
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="portfolio">
                         <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-desarrollador.png" alt="Portfolio personal para un desarrollador frontend." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio de Desarrollador</h3></div></div>
                     </div>
-
-                    <!-- Catalogos -->
-                    <div class="product-item group" data-category="catalogos">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/catalogo-moda.png" alt="Catálogo digital interactivo para una marca de moda." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Catálogo de Moda</h3></div></div>
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="portfolio">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-artista.png" alt="Portfolio para Artista Plástico." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio de Artista</h3></div></div>
                     </div>
-                    <div class="product-item group" data-category="catalogos">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/catalogo-productos.png" alt="Catálogo de productos para una empresa de manufactura." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Catálogo de Productos</h3></div></div>
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="portfolio">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-diseñador.png" alt="Portfolio de Diseñador Gráfico." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio de Diseñador</h3></div></div>
+                    </div>
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="portfolio">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-arquitecto.png" alt="Portfolio para Estudio de Arquitectura." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Portfolio de Arquitecto</h3></div></div>
+                    </div>
+                    <div class="product-item group scroll-animate scroll-animate-zoomIn" data-category="portfolio">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg"><img src="portfolio/portfolio-musico.png" alt="Sitio Web para Músico." class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1F2937/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-0 left-0 p-4"><h3 class="text-lg font-bold text-white">Web para Músico</h3></div></div>
                     </div>
                 </div>
             </div>
@@ -434,23 +439,23 @@
         <section id="porque-elegirnos" class="page-section pt-20 pb-10 bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">¿Por qué Elegirnos?</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate">En Quantum, no solo escribimos código o diseñamos interfaces. Construimos puentes entre las ideas de nuestros clientes y el éxito en el mundo digital.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate scroll-animate-fadeInUp">¿Por qué Elegirnos?</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 150ms;">En Quantum, no solo escribimos código o diseñamos interfaces. Construimos puentes entre las ideas de nuestros clientes y el éxito en el mundo digital.</p>
                 </div>
                 <!-- Misión y Visión -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 stagger-animation">
-                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate scroll-animate-fadeInLeft">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestra Misión</h3>
                         <p class="text-gray-300">Empoderar a empresas de todos los tamaños con soluciones tecnológicas innovadoras, personalizadas y de alta calidad que generen un impacto medible y duradero.</p>
                     </article>
-                     <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                     <article class="bg-gray-900 p-8 rounded-lg scroll-animate scroll-animate-fadeInRight" style="--stagger-delay: 150ms;">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestra Visión</h3>
                         <p class="text-gray-300">Aspiramos a ser un referente de confianza en el desarrollo de sitios web de alta calidad, destacándonos por nuestra atención al detalle y por construir relaciones sólidas y duraderas con cada uno de nuestros clientes.</p>
                     </article>
                 </div>
                 <!-- Contenido Adicional -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-10 stagger-animation">
-                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate scroll-animate-fadeInUp">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestros Valores</h3>
                         <ul class="space-y-3 text-gray-300">
                             <li class="flex items-start"><i data-lucide="shield-check" class="w-5 h-5 mr-3 mt-1 text-green-400"></i><span><strong class="text-white">Calidad:</strong> Nos obsesionamos con los detalles y entregamos productos pulidos y profesionales.</span></li>
@@ -458,15 +463,15 @@
                             <li class="flex items-start"><i data-lucide="lightbulb" class="w-5 h-5 mr-3 mt-1 text-green-400"></i><span><strong class="text-white">Innovación:</strong> Nos mantenemos actualizados para aplicar las mejores y más nuevas tecnologías.</span></li>
                         </ul>
                     </article>
-                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 150ms;">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">Nuestro Proceso</h3>
                         <p class="text-gray-300">Nuestro método de trabajo es transparente y colaborativo. Inicia con una fase de descubrimiento para entender tus metas, seguido del diseño y desarrollo, con revisiones constantes para asegurar que el resultado final sea exactamente lo que esperas.</p>
                     </article>
-                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 300ms;">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">El Equipo</h3>
                         <p class="text-gray-300">Somos un equipo apasionado de diseñadores y desarrolladores con un objetivo en común: crear experiencias web memorables. Combinamos creatividad y precisión técnica para llevar tus ideas a la realidad.</p>
                     </article>
-                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate">
+                    <article class="bg-gray-900 p-8 rounded-lg scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 450ms;">
                         <h3 class="text-2xl font-bold text-indigo-400 mb-4">¿Por qué Elegirnos?</h3>
                         <p class="text-gray-300">Nos diferenciamos por nuestro enfoque personalizado. No ofrecemos soluciones genéricas; nos sumergimos en tu proyecto para crear un sitio web único que represente tu marca y conecte con tu audiencia de manera efectiva.</p>
                     </article>
@@ -474,12 +479,12 @@
                 
                 <!-- Testimonios -->
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">La Voz de Nuestros Clientes</h2>
-                     <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate">La confianza es nuestro mayor activo. Esto es lo que dicen quienes han trabajado con nosotros.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate scroll-animate-fadeInUp">La Voz de Nuestros Clientes</h2>
+                     <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 150ms;">La confianza es nuestro mayor activo. Esto es lo que dicen quienes han trabajado con nosotros.</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto stagger-animation">
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate"><p class="text-gray-300 italic">"Quantum transformó nuestra visión en una realidad digital impresionante. Su profesionalismo es inigualable."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente1.png" alt="Foto de perfil de Carla Estrada, dueña de una tienda de ropa." onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Carla Estrada</p><p class="text-sm text-gray-400">Dueña de Tienda de Ropa</p></div></div></article>
-                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate"><p class="text-gray-300 italic">"El equipo no solo entregó un producto de alta calidad, sino que nos asesoró en cada paso. Los recomiendo al 100%."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente2.png" alt="Foto de perfil de Marcos Jiménez, dueño de una cafetería." onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Marcos Jiménez</p><p class="text-sm text-gray-400">Dueño de Cafetería</p></div></div></article>
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate scroll-animate-fadeInLeft"><p class="text-gray-300 italic">"Quantum transformó nuestra visión en una realidad digital impresionante. Su profesionalismo es inigualable."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente1.png" alt="Foto de perfil de Carla Estrada, dueña de una tienda de ropa." onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Carla Estrada</p><p class="text-sm text-gray-400">Dueña de Tienda de Ropa</p></div></div></article>
+                    <article class="bg-gray-900 p-8 rounded-xl shadow-lg scroll-animate scroll-animate-fadeInRight" style="--stagger-delay: 150ms;"><p class="text-gray-300 italic">"El equipo no solo entregó un producto de alta calidad, sino que nos asesoró en cada paso. Los recomiendo al 100%."</p><div class="mt-6 flex items-center"><img class="h-12 w-12 rounded-full object-cover" src="galeria/cliente2.png" alt="Foto de perfil de Marcos Jiménez, dueño de una cafetería." onerror="this.onerror=null; this.src='https://placehold.co/100x100/374151/FFFFFF?text=Falta+imagen:%0A' + this.getAttribute('src');"><div class="ml-4"><p class="font-semibold text-white">Marcos Jiménez</p><p class="text-sm text-gray-400">Dueño de Cafetería</p></div></div></article>
                 </div>
             </div>
         </section>
@@ -489,11 +494,11 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Información de Contacto -->
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate">Hablemos de tu Próximo Proyecto</h2>
-                    <p class="mt-4 text-lg text-gray-400 scroll-animate">Estamos listos para escuchar tu idea y convertirla en una solución digital exitosa. Contáctanos.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white scroll-animate scroll-animate-fadeInUp">Hablemos de tu Próximo Proyecto</h2>
+                    <p class="mt-4 text-lg text-gray-400 scroll-animate scroll-animate-fadeInUp" style="--stagger-delay: 150ms;">Estamos listos para escuchar tu idea y convertirla en una solución digital exitosa. Contáctanos.</p>
                 </div>
                 <div class="max-w-2xl mx-auto">
-                    <div class="scroll-animate">
+                    <div class="scroll-animate scroll-animate-zoomIn">
                         <h3 class="text-2xl font-bold mb-6 text-center">Información de Contacto</h3>
                         <div class="space-y-4 text-gray-300 bg-gray-900 p-8 rounded-lg shadow-lg">
                             <p class="flex items-center text-lg"><i data-lucide="map-pin" class="w-6 h-6 mr-4 text-indigo-400 flex-shrink-0"></i> Diagonal 76 289 2D, La Plata, Buenos Aires, Argentina</p>
@@ -554,31 +559,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             const pageSections = document.querySelectorAll('.page-section');
-
-            function showTab(targetId) {
-                pageSections.forEach(section => {
-                    section.classList.add('hidden');
-                    section.classList.remove('animate-fadeIn');
-                });
-
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.classList.remove('hidden');
-                    if (targetId !== 'hero') {
-                         targetSection.classList.add('animate-fadeIn');
-                    }
-                }
-
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.toggle('active', link.dataset.target === targetId);
-                });
-                
-                mobileMenu.classList.add('hidden');
-                // No hacer scroll al inicio al cambiar de pestaña
-                // window.scrollTo(0, 0);
-                lucide.createIcons();
-            }
-
+            
             navLinks.forEach(link => {
                 link.addEventListener('click', function(event) {
                     event.preventDefault();
@@ -586,10 +567,8 @@
                     if (targetId) {
                         const targetSection = document.getElementById(targetId);
                         if(targetSection){
-                            // Scroll suave a la sección
                             targetSection.scrollIntoView({ behavior: 'smooth' });
                         }
-                        showTab(targetId);
                     }
                 });
             });
@@ -615,11 +594,7 @@
 
                         galleryItems.forEach(item => {
                             const isVisible = filter === 'all' || item.dataset.category === filter;
-                            if (!isVisible) {
-                                item.classList.add('hidden');
-                            } else {
-                                item.classList.remove('hidden');
-                            }
+                             item.classList.toggle('hidden', !isVisible);
                         });
                     });
                 });
@@ -672,7 +647,7 @@
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
             // --- SCRIPT PARA ANIMACIONES EN SCROLL ---
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
@@ -693,9 +668,21 @@
                 });
             });
 
-            // Mostrar la pestaña de inicio por defecto
-            showTab('hero');
-            setTimeout(() => lucide.createIcons(), 100);
+            // --- SCRIPT PARA NAVEGACIÓN ACTIVA EN SCROLL ---
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.toggle('active', link.dataset.target === entry.target.id);
+                        });
+                    }
+                });
+            }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
+
+            pageSections.forEach(section => {
+                navObserver.observe(section);
+            });
+            
         });
     </script>
 
